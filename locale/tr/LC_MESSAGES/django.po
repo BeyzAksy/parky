@@ -1,0 +1,122 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-03-07 15:32+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: Core/apps.py:6
+msgid "Core"
+msgstr "Çekirdek"
+
+#: Core/models.py:7 Core/models.py:10 Users/models.py:56
+msgid "City"
+msgstr "Şehir"
+
+#: Core/models.py:11
+msgid "Cities"
+msgstr "Şehirler"
+
+#: Users/admin.py:20
+msgid "Base Informations"
+msgstr "Temel Bilgiler"
+
+#: Users/admin.py:23
+msgid "Personal Informations"
+msgstr "Kişisel Bilgiler"
+
+#: Users/admin.py:27
+msgid "Important Informations"
+msgstr "Önemli Bilgiler"
+
+#: Users/admin.py:30 Users/admin.py:69
+msgid "Permissions"
+msgstr "İzinler"
+
+#: Users/admin.py:69
+msgid "Groups"
+msgstr "Gruplar"
+
+#: Users/admin.py:90
+msgid "Delete selected Users"
+msgstr "Kullanıcıyı Sil"
+
+#: Users/apps.py:6 Users/models.py:68
+msgid "Users"
+msgstr "Kullanıcılar"
+
+#: Users/forms.py:10
+msgid ""
+"Raw passwords are not stored, so there is no way to see this user's "
+"password, but you can change the password using <a href=\"../password/"
+"\">this form</a>."
+msgstr ""
+
+#: Users/forms.py:34
+msgid "Password"
+msgstr "Parola"
+
+#: Users/models.py:12
+msgid "Users must have email address."
+msgstr "Kullanıcıların e-posta adresi olmalıdır"
+
+#: Users/models.py:26
+msgid "Admins must have email address."
+msgstr "Yöneticilerin e-posta adresi olmalıdır"
+
+#: Users/models.py:42
+msgid "Admin"
+msgstr "Admin"
+
+#: Users/models.py:43
+msgid "Customer"
+msgstr "Kullanıcı"
+
+#: Users/models.py:44
+msgid "Park Owner"
+msgstr "Park Sahibi"
+
+#: Users/models.py:47
+msgid "Email"
+msgstr "E-posta"
+
+#: Users/models.py:49
+msgid "First Name"
+msgstr "İsim"
+
+#: Users/models.py:50
+msgid "Last Name"
+msgstr "Soyisim"
+
+#: Users/models.py:53
+msgid "Phone Number"
+msgstr "Telefon Numarası"
+
+#: Users/models.py:57
+msgid "Active"
+msgstr "Aktif"
+
+#: Users/models.py:58
+msgid "Staff"
+msgstr "Çalışan"
+
+#: Users/models.py:61
+msgid "Type"
+msgstr "Kullanıcı Tipi"
+
+#: Users/models.py:67
+msgid "User"
+msgstr "Kullanıcı"

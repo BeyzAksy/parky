@@ -37,8 +37,10 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    
+
     'Users',
+    'Core',
+    'Car',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -72,7 +74,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'parky.wsgi.application'
 
-
+AUTH_USER_MODEL = 'Users.User'
 # Database
 # https://docs.djangoproject.com/en/1.8/ref/settings/#databases
 
@@ -88,6 +90,10 @@ DATABASES = {
 # https://docs.djangoproject.com/en/1.8/topics/i18n/
 
 LANGUAGE_CODE = 'tr-TR'
+
+LOCALE_PATHS = (
+    os.path.join(BASE_DIR, "locale"),
+    )
 
 TIME_ZONE = 'Europe/Istanbul'
 
