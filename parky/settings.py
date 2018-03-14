@@ -12,15 +12,18 @@ https://docs.djangoproject.com/en/1.8/ref/settings/
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 import os
+import sys
+from .secret import SECRET_KEY, GOOGLE_MAP_API_KEY
 
-BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+PACKAGE_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), os.pardir))
+BASE_DIR = os.path.dirname(PACKAGE_ROOT)
 
-
+sys.path.append(PACKAGE_ROOT + '/parky')
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.8/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '8kmrq0%3vbfv3o+&*@7&^@sy%&rbix2#9uq1n$05wfa+5mf@gm'
+SECRET_KEY = SECRET_KEY
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -37,10 +40,15 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'geoposition',
+    'parky',
 
     'Users',
     'Core',
     'Car',
+    'Park',
+    'WorkingHours',
+    'Rezervation',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -75,6 +83,22 @@ TEMPLATES = [
 WSGI_APPLICATION = 'parky.wsgi.application'
 
 AUTH_USER_MODEL = 'Users.User'
+
+# Django Geoposition
+
+GEOPOSITION_GOOGLE_MAPS_API_KEY = GOOGLE_MAP_API_KEY
+
+GEOPOSITION_MAP_OPTIONS = {
+    'minZoom': 6,
+    'maxZoom': 20,
+    'center': {'lat': 41.008238, 'lng': 28.978359},
+    'scrollwheel': False,
+}
+
+GEOPOSITION_MARKER_OPTIONS = {
+    'position': {'lat': 41.008238, 'lng': 28.978359},
+}
+
 # Database
 # https://docs.djangoproject.com/en/1.8/ref/settings/#databases
 
@@ -92,7 +116,7 @@ DATABASES = {
 LANGUAGE_CODE = 'tr-TR'
 
 LOCALE_PATHS = (
-    os.path.join(BASE_DIR, "locale"),
+    os.path.join(PACKAGE_ROOT, "locale"),
     )
 
 TIME_ZONE = 'Europe/Istanbul'

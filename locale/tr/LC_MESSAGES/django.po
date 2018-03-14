@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-03-07 15:32+0300\n"
+"POT-Creation-Date: 2018-03-14 20:32+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,25 +18,126 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 
+#: Car/admin.py:13
+msgid "Car Information"
+msgstr "Araç Bilgileri"
+
+#: Car/admin.py:16 Park/admin.py:19 Rezervation/admin.py:15 Users/admin.py:23
+msgid "Personal Informations"
+msgstr "Kişisel Bilgiler"
+
+#: Car/apps.py:6 Car/models.py:21 Rezervation/models.py:16
+msgid "Car"
+msgstr "Araç"
+
+#: Car/models.py:11
+msgid "Long Car"
+msgstr "Uzun Araç"
+
+#: Car/models.py:12
+msgid "Short Car"
+msgstr "Kısa Araç"
+
+#: Car/models.py:15
+msgid "Plate"
+msgstr "Plaka"
+
+#: Car/models.py:16
+msgid "Color"
+msgstr "Renk"
+
+#: Car/models.py:17
+msgid "Model"
+msgstr "Model"
+
+#: Car/models.py:18 Park/models.py:16 Users/apps.py:6 Users/models.py:68
+msgid "Users"
+msgstr "Kullanıcılar"
+
+#: Car/models.py:22
+msgid "Cars"
+msgstr "Araçlar"
+
 #: Core/apps.py:6
 msgid "Core"
 msgstr "Çekirdek"
 
-#: Core/models.py:7 Core/models.py:10 Users/models.py:56
+#: Core/models.py:8 Core/models.py:11 Park/models.py:20 Users/models.py:56
 msgid "City"
 msgstr "Şehir"
 
-#: Core/models.py:11
+#: Core/models.py:12
 msgid "Cities"
 msgstr "Şehirler"
+
+#: Park/admin.py:16
+msgid "Park Information"
+msgstr "Otopark Bilgileri"
+
+#: Park/admin.py:22
+msgid "Address Informations"
+msgstr "Adres Bilgileri"
+
+#: Park/apps.py:6 Park/models.py:24 Rezervation/models.py:15
+#: WorkingHours/models.py:18
+msgid "Park"
+msgstr "Otopark"
+
+#: Park/models.py:12
+msgid "Name"
+msgstr "Otopark Adı"
+
+#: Park/models.py:13
+msgid "Capacity"
+msgstr "Kapasite"
+
+#: Park/models.py:14
+msgid "Address"
+msgstr "Adres"
+
+#: Park/models.py:15
+msgid "Number of Car"
+msgstr "Toplam Araç Sayısı"
+
+#: Park/models.py:17
+msgid "Create Time"
+msgstr "Oluşturulma Zamanı"
+
+#: Park/models.py:18
+msgid "Coordinate"
+msgstr "Koordinat"
+
+#: Park/models.py:25
+msgid "Parks"
+msgstr "Otoparklar"
+
+#: Rezervation/admin.py:19 WorkingHours/admin.py:16
+msgid "Park Informations"
+msgstr "Otopark Bilgileri"
+
+#: Rezervation/apps.py:6 Rezervation/models.py:19
+msgid "Rezervation"
+msgstr "Rezervasyon"
+
+#: Rezervation/models.py:12 WorkingHours/models.py:16
+msgid "Start Time"
+msgstr "Başlangıç Saati"
+
+#: Rezervation/models.py:13 WorkingHours/models.py:17
+msgid "End Time"
+msgstr "Bitiş Saati"
+
+#: Rezervation/models.py:14 Users/models.py:67
+msgid "User"
+msgstr "Kullanıcı"
+
+#: Rezervation/models.py:20
+msgid "Rezervations"
+msgstr "Rezervasyonlar"
 
 #: Users/admin.py:20
 msgid "Base Informations"
 msgstr "Temel Bilgiler"
-
-#: Users/admin.py:23
-msgid "Personal Informations"
-msgstr "Kişisel Bilgiler"
 
 #: Users/admin.py:27
 msgid "Important Informations"
@@ -52,11 +153,7 @@ msgstr "Gruplar"
 
 #: Users/admin.py:90
 msgid "Delete selected Users"
-msgstr "Kullanıcıyı Sil"
-
-#: Users/apps.py:6 Users/models.py:68
-msgid "Users"
-msgstr "Kullanıcılar"
+msgstr "Kullanıcı Sil"
 
 #: Users/forms.py:10
 msgid ""
@@ -117,6 +214,26 @@ msgstr "Çalışan"
 msgid "Type"
 msgstr "Kullanıcı Tipi"
 
-#: Users/models.py:67
-msgid "User"
-msgstr "Kullanıcı"
+#: WorkingHours/admin.py:13
+msgid "Working Hours"
+msgstr "Çalışma Saatleri"
+
+#: WorkingHours/models.py:11
+msgid "Weekdays"
+msgstr "Haftaiçi"
+
+#: WorkingHours/models.py:12
+msgid "Weekdays + Saturday"
+msgstr "Haftaiçi + Cumartesi"
+
+#: WorkingHours/models.py:13
+msgid "Weekdays + Weekend"
+msgstr "Haftaiçi + Haftasonu"
+
+#: WorkingHours/models.py:19
+msgid "Days"
+msgstr "Çalışma Günleri"
+
+#: WorkingHours/models.py:22 WorkingHours/models.py:23
+msgid "WorkingHours"
+msgstr "Çalışma Saatleri"
