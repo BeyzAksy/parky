@@ -51,6 +51,7 @@ class UserAdmin(_UserAdmin):
     readonly_fields = ('last_login',)
     ordering = ('first_name', 'last_name')
 
+
     def save_model(self, request, obj, form, change):
         obj.save()
 
@@ -74,6 +75,15 @@ class UserAdmin(_UserAdmin):
 
         return custom_fieldsets
 
+    def get_readonly_fields(self, request, obj=None):
+        readonly_fields = super(UserAdmin, self). get_readonly_fields(request, obj)
+
+        if request.user.is_superuser:
+            return self.readonly_fields
+        else:
+            readonly_fields = ['last_login', 'type']
+            return readonly_fields
+            
     def get_queryset(self, request):
         qs = super(UserAdmin, self).get_queryset(request)
 
@@ -96,6 +106,7 @@ class UserAdmin(_UserAdmin):
             del actions['delete_selected']
 
         return actions
+
 
     def has_add_permission(self, request):
         if request.user.is_superuser:

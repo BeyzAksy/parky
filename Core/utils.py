@@ -21,7 +21,7 @@ def default():
     user_permissions = [
         p for p in Permission.objects.filter(
             Q(content_type__app_label__in=['Users'])
-            & Q(codename__icontains='Users')
+            & Q(codename__icontains='User')
         )
     ]
 

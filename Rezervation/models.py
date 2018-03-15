@@ -18,6 +18,3 @@ class Rezervation(models.Model):
     class Meta:
         verbose_name=_(u'Rezervation')
         verbose_name_plural=_(u'Rezervations')
-
-    #def __str__(self):
-    #    return self.name

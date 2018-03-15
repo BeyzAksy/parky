@@ -62,3 +62,6 @@ target/
 
 # Database
 *.sqlite3
+
+# Secret Values
+secret.py

@@ -15,7 +15,7 @@ class Car(models.Model):
         plate = models.CharField(verbose_name=_('Plate'), max_length=50)
         color = models.CharField(verbose_name=_('Color'), max_length=50)
         type = models.CharField(verbose_name=_('Model'), max_length=50, choices=TYPE_CHOICES, default="short")
-        users = models.ManyToManyField(verbose_name=_('Users'), to = User)
+        users = models.ForeignKey(verbose_name=_('Users'), to = User)
 
         class Meta:
             verbose_name=_(u'Car')

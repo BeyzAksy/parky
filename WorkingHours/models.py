@@ -21,6 +21,3 @@ class WorkingHours(models.Model):
     class Meta:
         verbose_name = _('WorkingHours')
         verbose_name_plural = _('WorkingHours')
-
-    #def __str__(self):
-    #    return self.name
