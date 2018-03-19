@@ -24,5 +24,16 @@ def default():
             & Q(codename__icontains='User')
         )
     ]
+    car_permissions = [
+        p for p in Permission.objects.filter(
+            Q(content_type__app_label__in=['Car'])
+        )
+    ]
 
-    create_group(GROUP_DEFAULT, (user_permissions))
+    rezervation_permissions = [
+        p for p in Permission.objects.filter(
+            Q(content_type__app_label__in=['Rezervation'])
+        )
+    ]
+
+    create_group(GROUP_DEFAULT, (user_permissions + car_permissions + rezervation_permissions))

@@ -4,6 +4,7 @@ from django.core.validators import RegexValidator
 
 from .models import Car
 from Users.models import User
+from Core.utils import GROUP_DEFAULT
 
 @admin.register(Car)
 class CarAdmin(admin.ModelAdmin):
@@ -13,38 +14,36 @@ class CarAdmin(admin.ModelAdmin):
         (_(u'Car Information'), {
             'fields' : ('plate', 'color', 'type'),
         }),
-        (_(u'Personal Informations'), {
-            'fields' : ('users',),
-        }),
     )
 
     list_display = ('plate', 'type')
     list_filter = ('plate',)
     search_fields = ('plate', 'color', 'type')
-def save_model(self, request, obj, form, change):
-    obj.user = request.user
-    obj.save()
 
-def get_queryset(self, request):
-    qs = super(ParkAdmin, self).get_queryset(request)
+    def save_model(self, request, obj, form, change):
+        obj.users = request.user
+        obj.save()
 
-    if not request.user.is_superuser:
-        qs = qs.filter(user=request.user.id)
+    def get_queryset(self, request):
+        qs = super(CarAdmin, self).get_queryset(request)
 
-    return qs
+        if not request.user.is_superuser:
+            qs = qs.filter(users=request.user.id)
 
-def has_add_permission(self, request):
-    group_names = [group.name for group in request.user.groups.all()]
+        return qs
 
-    if request.user.is_superuser or GROUP_DEFAULT in group_names:
-        return True
-    else:
-        return False
+    def has_add_permission(self, request):
+        group_names = [group.name for group in request.user.groups.all()]
 
-def has_delete_permission(self, request, obj=None):
-    group_names = [group.name for group in request.user.groups.all()]
+        if request.user.is_superuser or GROUP_DEFAULT in group_names:
+            return True
+        else:
+            return False
 
-    if request.user.is_superuser or GROUP_DEFAULT in group_names:
-        return True
-    else:
-        return False
+    def has_delete_permission(self, request, obj=None):
+        group_names = [group.name for group in request.user.groups.all()]
+
+        if request.user.is_superuser or GROUP_DEFAULT in group_names:
+            return True
+        else:
+            return False

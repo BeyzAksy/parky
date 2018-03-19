@@ -38,12 +38,6 @@ class UserManager(BaseUserManager):
 
 class User(AbstractBaseUser, PermissionsMixin):
 
-    TYPE_CHOICES = (
-        ('admin', _('Admin')),
-        ('customer', _('Customer')),
-        ('park-owner', _('Park Owner')),
-    )
-
     email = models.EmailField(verbose_name=_('Email'), max_length=255,
                         unique=True)
     first_name = models.CharField(verbose_name=_('First Name'), max_length=50)
@@ -57,8 +51,6 @@ class User(AbstractBaseUser, PermissionsMixin):
     is_active = models.BooleanField(verbose_name=_('Active'), default=True)
     is_staff = models.BooleanField(verbose_name=_('Staff'), default=True)
     objects = UserManager()
-
-    type = models.CharField(verbose_name=_('Type'), max_length=50, choices=TYPE_CHOICES, default="customer")
 
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['first_name', 'last_name']
