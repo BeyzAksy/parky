@@ -43,9 +43,9 @@ class User(AbstractBaseUser, PermissionsMixin):
     first_name = models.CharField(verbose_name=_('First Name'), max_length=50)
     last_name = models.CharField(verbose_name=_('Last Name'), max_length=50)
     phone_regex = RegexValidator(regex=r'^(05(\d{2}) (\d{3}) (\d{4}))$',
-    message="Telefon numarası formatı şu şekilde olmalıdır: '05xx xxx xxxx'." )
+        message="Telefon numarası formatı şu şekilde olmalıdır: '05xx xxx xxxx'." )
     phone_number = models.CharField(verbose_name=_('Phone Number'),
-    validators=[phone_regex], max_length=17) # validators should be a list
+        validators=[phone_regex], max_length=17) # validators should be a list
 
     city = models.ForeignKey(verbose_name=_('City'), to='Core.City', null=True)
     is_active = models.BooleanField(verbose_name=_('Active'), default=True)

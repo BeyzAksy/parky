@@ -21,14 +21,14 @@ class CarAdmin(admin.ModelAdmin):
     search_fields = ('plate', 'color', 'type')
 
     def save_model(self, request, obj, form, change):
-        obj.users = request.user
+        obj.user = request.user
         obj.save()
 
     def get_queryset(self, request):
         qs = super(CarAdmin, self).get_queryset(request)
 
         if not request.user.is_superuser:
-            qs = qs.filter(users=request.user.id)
+            qs = qs.filter(user=request.user.id)
 
         return qs
 

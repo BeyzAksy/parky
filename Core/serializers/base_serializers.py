@@ -4,7 +4,7 @@ from rest_framework import serializers
 from django.utils.translation import ugettext_lazy as _
 
 # Local Django
-from core.models import City
+from Core.models import City
 
 class CitySerializer(serializers.ModelSerializer):
 

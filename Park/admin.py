@@ -16,14 +16,23 @@ class ParkAdmin(admin.ModelAdmin):
         (_(u'Park Information'), {
             'fields' : ('name', 'capacity','number_of_car_inside'),
         }),
-        (_(u'Personal Informations'), {
-            'fields' : ('users',),
-        }),
         (_(u'Address Informations'), {
             'fields' : ('city', 'address', 'coordinate'),
         }),
     )
 
-    list_display = ('name', 'capacity', 'number_of_car_inside', 'create_time')
+    list_display = ('name', 'capacity', 'number_of_car_inside')
     list_filter = ('name',)
     search_fields = ('name',)
+
+    def save_model(self, request, obj, form, change):
+        obj.user = request.user
+        obj.save()
+
+    def get_queryset(self, request):
+        qs = super(ParkAdmin, self).get_queryset(request)
+
+        if not request.user.is_superuser:
+            qs = qs.filter(user=request.user.id)
+
+        return qs

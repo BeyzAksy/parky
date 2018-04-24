@@ -11,12 +11,11 @@ from Core.models import City
 class Park(models.Model):
     name = models.CharField(verbose_name=_('Name'), max_length=50)
     capacity = models.PositiveSmallIntegerField(verbose_name=_('Capacity'))
-    address = models.TextField(verbose_name=_('Address'),blank=True)
-    number_of_car_inside = models.PositiveSmallIntegerField(verbose_name=_('Number of Car'))
-    users = models.ManyToManyField(verbose_name=_('Users'),to=User)
-    create_time= models.DateTimeField(verbose_name=_('Create Time'),auto_now_add=True)
-    coordinate = GeopositionField(verbose_name=_('Coordinate'), null=True,
-                                        blank=True)
+    address = models.TextField(verbose_name=_('Address'))
+    number_of_car_inside = models.PositiveSmallIntegerField(verbose_name=_('Number of Car'), blank=True)
+    user = models.ForeignKey(verbose_name=_('User'),to=User)
+    create_time= models.DateTimeField(verbose_name=_('Create Time'), auto_now_add=True)
+    coordinate = GeopositionField(verbose_name=_('Coordinate'))
     city = models.ForeignKey(verbose_name=_('City'), to=City)
 
 

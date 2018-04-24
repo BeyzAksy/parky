@@ -21,24 +21,25 @@ class UserAdmin(_UserAdmin):
             'fields' : ('email', 'password'),
         }),
         (_(u'Personal Informations'), {
-            'fields' : ('type', 'first_name', 'last_name', 'city',
+            'fields' : ('first_name', 'last_name', 'city',
             'phone_number')
         }),
         (_(u'Important Informations'), {
             'fields' : ('last_login',)
         }),
         (_(u'Permissions'), {
-            'fields' : ('is_active','is_staff' ,'is_superuser', 'groups',
-                        'user_permissions')
+            'fields' : ('is_active','is_staff' ,'is_superuser',)
         }),
+        (_(u'Groups'), {
+            'fields' : ('groups',),
+        })
     )
 
     add_fieldsets = (
         (None, {
             'classes': ('wide',),
             'fields': ('email', 'first_name', 'last_name', 'city',
-            'phone_number', 'password1',
-                        'password2','groups', 'user_permissions')}
+                        'phone_number', 'password1', 'password2', 'groups' )}
         ),
     )
 
@@ -50,6 +51,7 @@ class UserAdmin(_UserAdmin):
     search_fields = ('email', 'first_name', 'last_name')
     readonly_fields = ('last_login',)
     ordering = ('first_name', 'last_name')
+    filter_horizontal = ('groups',)
 
 
     def save_model(self, request, obj, form, change):
@@ -81,9 +83,9 @@ class UserAdmin(_UserAdmin):
         if request.user.is_superuser:
             return self.readonly_fields
         else:
-            readonly_fields = ['last_login', 'type']
+            readonly_fields = ['last_login',]
             return readonly_fields
-            
+
     def get_queryset(self, request):
         qs = super(UserAdmin, self).get_queryset(request)
 
