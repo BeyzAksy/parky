@@ -12,8 +12,13 @@ from Park.models import Park
 from Park.serializers import ParkSerializer
 
 class WorkingHoursSerializer(serializers.ModelSerializer):
-    park = ParkSerializer()
-    type = serializers.CharField(source="get_type_display")
+    try:
+        park = Park.objects.get(user_id=id)
+        serializer = ParkSerializer(many=True, read_only=True)
+    except:
+        pass
+
+    tip = serializers.CharField(source='get_tip_display')
     start_time = serializers.DateTimeField(format="%d-%m-%Y %H:%M:%S")
     end_time = serializers.DateTimeField(format="%d-%m-%Y %H:%M:%S")
     class Meta:
@@ -36,7 +41,7 @@ class WorkingHoursCreateSerializer(WorkingHoursSerializer):
 
     class Meta:
         model = WorkingHours
-        fields = ('start_time','end_time')
+        fields = ('park', 'start_time','end_time', 'type')
 
 
 class WorkingHoursUpdateSerializer(WorkingHoursSerializer):

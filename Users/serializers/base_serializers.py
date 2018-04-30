@@ -26,7 +26,6 @@ class UserSerializer(serializers.ModelSerializer):
 
 
 class UserListSerializer(UserSerializer):
-
     class Meta:
         model = User
         fields = ('id', 'email', 'first_name', 'last_name', 'phone_number', 'city',)
@@ -36,17 +35,20 @@ class UserRetrieveSerializer(UserSerializer):
 
 
 class UserCreateSerializer(UserSerializer):
-    confirm_password = serializers.CharField(read_only=True)
+    confirm_password = serializers.CharField()
 
     class Meta:
         model = User
         fields = (
-            'city', 'email', 'first_name', 'last_name', 'phone_number','password', 'confirm_password'
-        )
+            'city', 'email', 'first_name', 'last_name', 'phone_number', 'password', 'confirm_password')
         extra_kwargs = {
             'password': {'write_only': True},
             'city': {'required': True}
         }
+
+    def create(self, validated_data):
+        del validated_data["confirm_password"]
+        return super(UserCreateSerializer, self).create(validated_data)
 
     def validate_password(self, value):
         if value != self.initial_data.get('confirm_password', None):

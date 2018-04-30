@@ -18,4 +18,4 @@ class RezervationViewSetV1(RezervationViewSet):
         elif self.action == 'update':
             return RezervationUpdateSerializerV1
         else:
-            return RezervationSerializerV1
+            return RezervationSerializer

@@ -18,9 +18,9 @@ LIST_V1 = [
     (r'users', UserViewSetV1, 'users'),
     (r'cars', CarViewSetV1, 'cars'),
     (r'cities', CityViewSetV1, 'cities'),
-    (r'parks', CityViewSetV1, 'parks'),
+    (r'parks', ParkViewSetV1, 'parks'),
     (r'rezervations', RezervationViewSetV1, 'rezervations'),
-    (r'workinghours', RezervationViewSetV1, 'workinghours'),
+    (r'workinghours', WorkingHoursViewSetV1, 'workinghours'),
 ]
 
 for router in LIST_V1:

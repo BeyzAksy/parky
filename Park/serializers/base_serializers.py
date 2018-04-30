@@ -13,13 +13,18 @@ from Core.serializers import CitySerializer
 
 
 class ParkSerializer(serializers.ModelSerializer):
-    city = CitySerializer()
-    creat_time = serializers.DateTimeField(format="%d-%m-%Y %H:%M:%S")
+    try:
+        city = City.objects.get(user_id=id)
+        serializer = CitySerializer(many=True, read_only=True)
+    except:
+        pass
+
+    create_time = serializers.DateTimeField(format="%d-%m-%Y %H:%M:%S")
     #number_of_car_inside
     #coordinate
     class Meta:
         model = Park
-        fields = ('id', 'city', 'name', 'adress', 'capacity', 'number_of_car_inside', 'creat_time', 'coordinate')
+        fields = ('id', 'city', 'name', 'address', 'capacity', 'number_of_car_inside', 'create_time', 'coordinate')
 
 class ParkListSerializer(ParkSerializer):
 

@@ -18,4 +18,4 @@ class WorkingHoursViewSetV1(WorkingHoursViewSet):
         elif self.action == 'update':
             return WorkingHoursUpdateSerializerV1
         else:
-            return WorkingHoursSerializerV1
+            return WorkingHoursSerializer

@@ -11,7 +11,7 @@ from Car.models import Car
 
 
 class CarSerializer(serializers.ModelSerializer):
-    type = serializers.CharField(source="get_type_display")
+    tip = serializers.CharField(source='get_tip_display')
 
     class Meta:
         model = Car

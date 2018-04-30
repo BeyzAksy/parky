@@ -15,8 +15,19 @@ from Park.serializers import ParkSerializer
 
 
 class RezervationSerializer(serializers.ModelSerializer):
-    park = ParkSerializer()
-    car = CarSerializer()
+    try:
+        park = Park.objects.get(user_id=id)
+        serializer = ParkSerializer(many=True, read_only=True)
+    except:
+        pass
+
+    try:
+        car = Car.objects.get(user_id=id)
+        serializer = CarSerializer(many=True, read_only=True)
+    except:
+        pass
+
+    #car = CarSerializer()
     start_time = serializers.DateTimeField(format="%d-%m-%Y %H:%M:%S")
     end_time = serializers.DateTimeField(format="%d-%m-%Y %H:%M:%S")
 
@@ -28,7 +39,7 @@ class RezervationListSerializer(RezervationSerializer):
 
     class Meta:
         model = Rezervation
-        fields = ('id', 'start_time', 'end_time',)
+        fields = ('id', 'park', 'car', 'start_time', 'end_time',)
 
 
 class RezervationRetrieveSerializer(RezervationSerializer):
@@ -37,9 +48,15 @@ class RezervationRetrieveSerializer(RezervationSerializer):
 
 class RezervationCreateSerializer(RezervationSerializer):
 
+    def __init__(self, *args, **kwargs):
+        super(RezervationCreateSerializer, self).__init__(*args, **kwargs)
+        request_user = self.context['request'].user
+        self.fields['car'].queryset = Car.objects.filter(user=request_user)
+
     class Meta:
         model = Rezervation
-        fields = ('start_time', 'end_time')
+        fields = ('park','car', 'start_time', 'end_time',)
+
 
 class RezervationUpdateSerializer(RezervationSerializer):
 

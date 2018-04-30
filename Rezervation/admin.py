@@ -28,6 +28,12 @@ class RezervationAdmin(admin.ModelAdmin):
         obj.user = request.user
         obj.save()
 
+    def formfield_for_foreignkey(self, db_field, request, **kwargs):
+        if db_field.name == "car" and not request.user.is_superuser:
+            kwargs["queryset"] = Car.objects.filter(user=request.user)
+
+        return super(RezervationAdmin, self).formfield_for_foreignkey(db_field, request, **kwargs)
+
     def get_queryset(self, request):
         qs = super(RezervationAdmin, self).get_queryset(request)
 

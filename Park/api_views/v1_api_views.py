@@ -18,4 +18,4 @@ class ParkViewSetV1(ParkViewSet):
         elif self.action == 'update':
             return ParkUpdateSerializerV1
         else:
-            return ParkSerializerV1
+            return ParkSerializer

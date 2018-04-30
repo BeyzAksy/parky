@@ -18,4 +18,4 @@ class CarViewSetV1(CarViewSet):
         elif self.action == 'update':
             return CarUpdateSerializerV1
         else:
-            return CarSerializerV1
+            return CarSerializer
